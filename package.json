@@ -1,0 +1,34 @@
+{
+  "name": "ionic-calculator-keyboard",
+  "version": "0.0.1",
+  "description": "Angular directive used with text inputs to display a calculator keyboard. Results will be displayed in said input.",
+  "main": "calculator.js",
+  "dependencies": {},
+  "devDependencies": {
+    "angular-mocks": "^1.3.16",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-minify-css": "^0.3.13",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.0.4",
+    "gulp-util": "^2.2.20",
+    "ionic": "^1.7.11",
+    "jasmine-core": "^2.4.1",
+    "jquery": "^2.1.4",
+    "karma": "^0.13.15",
+    "karma-jasmine": "^0.3.6",
+    "karma-phantomjs-launcher": "^0.2.1",
+    "phantomjs": "^1.9.19",
+    "shelljs": "^0.3.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ionic",
+    "calculator",
+    "angular"
+  ],
+  "author": "Amós Rivera <me@amosrivera.com>",
+  "license": "ISC"
+}

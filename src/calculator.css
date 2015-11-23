@@ -1,0 +1,141 @@
+.keyboard-open .popup,
+.calculator-keyboard-open .popup {
+  margin-top: -200px;
+}
+
+.keyboard-open .event-amount .container, .calculator-keyboard-open .event-amount .container {
+  margin-top: -40px;
+}
+
+.calculator-keyboard-wrapper {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 9999;
+}
+
+.calculator-keyboard-wrapper.calculator-keyboard-closed {
+  display: none;
+  bottom: -340px;
+}
+
+.calculator-keyboard-wrapper .calculator-operation-bar {
+  transition: all 0.1s ease-in-out;
+  position: absolute;
+  top: 0;
+  height: 30px;
+  width: 100%;
+  font-size: 15px;
+  padding: 3px;
+  text-align: right;
+  border-top: 1px solid #252525;
+  background: #333;
+  color: #ddd;
+  z-index: 1;
+}
+
+.calculator-keyboard-wrapper .calculator-operation-bar-open {
+  top: -30px;
+  z-index: 2;
+}
+
+.calculator-keyboard {
+  z-index: 2;
+  position: relative;
+  flex-direction: column;
+  height: 248px;
+  display: flex;
+  background: #333;
+  border-top: 1px solid #3e3e3e;
+}
+
+.calculator-keyboard .calculator-keyboard-row {
+  flex: 1;
+  display: flex;
+}
+
+.calculator-keyboard .calculator-keyboard-parentheses,
+.calculator-keyboard .calculator-keyboard-clear,
+.calculator-keyboard .calculator-keyboard-operator,
+.calculator-keyboard .calculator-keyboard-equals {
+  background-image: -webkit-radial-gradient(center, #333, #282828);
+}
+
+.calculator-keyboard .calculator-keyboard-parentheses.activated,
+.calculator-keyboard .calculator-keyboard-clear.activated,
+.calculator-keyboard .calculator-keyboard-operator.activated,
+.calculator-keyboard .calculator-keyboard-equals.activated {
+  background-image: -webkit-radial-gradient(center, #3f3f3f, #353535);
+  border-left: 1px solid #000;
+  border-top: 1px solid #000;
+  border-right: 1px solid #333;
+  border-bottom: 1px solid #333;
+}
+
+.calculator-keyboard button {
+  background-image: -webkit-radial-gradient(center, #3e3e3e 0%, #353535 100%);
+  border-left: 1px solid #111;
+  border-top: 1px solid #111;
+  border-right: 1px solid #444;
+  border-bottom: 1px solid #444;
+  flex: 25%;
+  flex-grow: 0;
+  text-align: center;
+  font-size: 15px;
+  color: #ccc;
+  text-shadow: 1px 1px #333;
+}
+
+.calculator-keyboard button.activated {
+  text-shadow: none;
+  color: #aaa;
+  background-image: -webkit-radial-gradient(bottom, #454545, #404040);
+  border-left: 1px solid #000;
+  border-top: 1px solid #000;
+  border-right: 1px solid #333;
+  border-bottom: 1px solid #333;
+}
+
+.calculator-keyboard button.activated img {
+  opacity: 0.6;
+}
+
+.calculator-keyboard .calculator-keyboard-equals {
+  background-image: -webkit-radial-gradient(center, #cc7608, #e58408);
+  border-top-color: #512f03;
+  border-left-color: #512f03;
+  border-right: 1px solid #f79d29;
+  border-bottom: 1px solid #f79d29;
+  font-size: 20px;
+  text-shadow: none;
+}
+
+.calculator-keyboard .calculator-keyboard-equals.activated {
+  color: #ccc;
+  background-image: -webkit-radial-gradient(center, #f69111, #f79d29);
+  border-top-color: black;
+  border-left-color: black;
+  border-right-color: #9b5a06 !important;
+  border-bottom-color: #9b5a06 !important;
+}
+
+.calculator-keyboard button[disabled="disabled"] {
+  opacity: 0.8;
+  color: #666;
+}
+
+.calculator-keyboard .calculator-keyboard-backspace img {
+  width: 25px;
+  margin: 10px auto;
+}
+
+input[readonly].regular-style {
+  background-color: #fff;
+  cursor: default;
+}
+
+.keyboard-open.popup-open,
+.calculator-keyboard-open.popup-open {
+  pointer-events: auto;
+}
