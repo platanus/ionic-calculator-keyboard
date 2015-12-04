@@ -56,7 +56,7 @@
         singleInput: true,
         name: 'epow',
         operation: function (a) {return Math.pow(Math.E, a);},
-        output: function (a, b) {return 'epow(' + a + ')';},
+        output: function (a) {return 'epow(' + a + ')';},
         buttonHTML: 'e<sup>x</sup>'
       },
       ln: {
@@ -65,7 +65,7 @@
         name: 'ln',
         operation: function (a) {return Math.log(a);},
         isInvalidInput: function (a) {return a <= 0 ? 'ln of non-positive number' : false;},
-        output: function (a, b) {return 'ln(' + a + ')';},
+        output: function (a) {return 'ln(' + a + ')';},
         buttonHTML: 'ln'
       },
       square: {
@@ -375,9 +375,8 @@
     function evaluateString(calculation){
       if(!calculation) return 0;
 
-      var currentNumberString = "";
-      var currentOperation;
-      var digits = String(calculation).split("");
+      var currentNumberString = '';
+      var digits = String(calculation).split('');
 
       clear(); //reset calculator
       angular.forEach(digits, handleDigit); //iterate
@@ -392,15 +391,15 @@
       }
 
       function isNumberCharacter(char){
-        return !isNaN(Number(char)) || char === ".";
+        return !isNaN(Number(char)) || char === '.';
       }
 
       function isParenthesis(char){
-        return "()".indexOf(char) !== -1;
+        return '()'.indexOf(char) !== -1;
       }
 
       function isOperator(char){
-        return "x+–÷".indexOf(char) !== -1;
+        return 'x+–÷'.indexOf(char) !== -1;
       }
 
       function addOperation(operator){
@@ -414,15 +413,10 @@
         clearCurrentNumber();
       }
 
-      function setCurrentOperation(operator){
-        clearCurrentNumber();
-        currentOperation = operator;
-      }
-
       function handleParentheses(parentheses){
         switch(parentheses){
-          case "(": openParentheses(); break;
-          case ")": closeParentheses(getCurrentNumber()); break;
+          case '(': openParentheses(); break;
+          case ')': closeParentheses(getCurrentNumber()); break;
         }
       }
 
@@ -448,7 +442,7 @@
       }
 
       function clearCurrentNumber(){
-        setCurrentNumber("");
+        setCurrentNumber('');
       }
     }
 
