@@ -41,8 +41,8 @@ var KEYBOARD_TEMPLATE =
   'use strict';
 
   angular
-    .module("calcKeyboard")
-    .service("calcKeyboardSrv", calcKeyboard);
+    .module('calcKeyboard')
+    .service('calcKeyboardSrv', calcKeyboard);
 
   /*@ngInject*/
   function calcKeyboard($ionicPosition, $rootScope, $timeout, calculatorSrv, $ionicPlatform, $ionicBody, $compile, IONIC_BACK_PRIORITY) {
@@ -59,7 +59,7 @@ var KEYBOARD_TEMPLATE =
       destroy: destroy
     };
 
-    function _build(callback){
+    function _build(){
       self.scope      = $rootScope.$new();
       self.element    = $compile(KEYBOARD_TEMPLATE)(self.scope);
       self.destroyed  = false;
@@ -85,29 +85,10 @@ var KEYBOARD_TEMPLATE =
 
       // TODO: require animation frame here
       self.element.removeClass('calculator-keyboard-closed');
-      documentBody.addClass("calculator-keyboard-open");
+      documentBody.addClass('calculator-keyboard-open');
 
       self.backButton = $ionicPlatform.registerBackButtonAction(hide,
         IONIC_BACK_PRIORITY.popup);
-    }
-
-    /**
-     * Uses canvas.measureText to compute and return the width of the given text of given font in pixels.
-     *
-     * @param {string} text The text to be rendered.
-     * @param {string} font The css font descriptor that text is to be rendered with (e.g. "bold 14px verdana").
-     *
-     * http://stackoverflow.com/questions/118241/calculate-text-width-with-javascript/21015393#21015393
-     */
-    function getTextWidth(text, font) {
-        var canvas, metrics, context;
-        // re-use canvas object for better performance
-        canvas = getTextWidth.canvas || (getTextWidth.canvas = window.document.createElement("canvas"));
-        context = canvas.getContext("2d");
-        context.font = font;
-        metrics = context.measureText(text);
-
-        return metrics.width;
     }
 
     function hide(callback){
@@ -115,7 +96,7 @@ var KEYBOARD_TEMPLATE =
 
       self.isShown = false;
       self.element.addClass('calculator-keyboard-closed');
-      documentBody.removeClass("calculator-keyboard-open");
+      documentBody.removeClass('calculator-keyboard-open');
 
       clearCalculationString();
       (self.backButton || angular.noop)();
@@ -151,14 +132,14 @@ var KEYBOARD_TEMPLATE =
      * @return string
      */
     function getInputValue(){
-      return String(self.inputController.$viewValue || "");
+      return String(self.inputController.$viewValue || '');
     }
 
     /**
      * @return number
      */
     function getInputValueNumber(){
-      if(getInputValue() === "") return 0;
+      if(getInputValue() === '') return 0;
       return parseInt(getInputValue());
     }
 
@@ -167,11 +148,11 @@ var KEYBOARD_TEMPLATE =
      */
     function clearInput(){
       if(isWaitingToClear()) clearOnNextPress(false);
-      setInputTo("");
+      setInputTo('');
     }
 
     function evaluateInput(){
-      return Math.round(Calculator.evaluateString(getInputValue()));
+      return Math.round(calculatorSrv.evaluateString(getInputValue()));
     }
 
     /**
@@ -201,16 +182,9 @@ var KEYBOARD_TEMPLATE =
       });
     }
 
-    /**
-     * @return string
-     */
-    function getCalculationString(){
-      return self.scope.calculationString || "";
-    }
-
     /** Clear the calculation history */
     function clearCalculationString(){
-      setCalculationString("");
+      setCalculationString('');
     }
 
     /**
@@ -220,7 +194,6 @@ var KEYBOARD_TEMPLATE =
     function handleButton(e){
       var button  = e.target.tagName === 'IMG' ? $(e.target).parent() : $(e.target);
       var value   = button.text();
-      var result;
 
       if(isWaitingToClear()) clearInput();
 
@@ -273,10 +246,10 @@ var KEYBOARD_TEMPLATE =
 
     /** Set the input value to the evaluated string */
     function handleEquals(){
-      var result = Calculator.evaluateString(getInputValue());
+      var result = calculatorSrv.evaluateString(getInputValue());
       setInputTo(Math.round(result));
 
-      if(getInputValue().indexOf("Error") != -1) clearOnNextPress(true);
+      if(getInputValue().indexOf('Error') !== -1) clearOnNextPress(true);
     }
 
   }
