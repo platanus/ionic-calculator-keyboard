@@ -9,7 +9,11 @@ var gulp = require('gulp'),
   ngannotate = require('gulp-ng-annotate');
 
 var paths = {
-  js_src: ['./src/*.js'],
+  js_src: [
+    './src/calculator.js',
+    './src/calculator-srv.js',
+    './src/calculator-keyboard-srv.js'
+  ],
   css_src: ['./src/*.css'],
   dist: ['./dist/*.js'],
 };
